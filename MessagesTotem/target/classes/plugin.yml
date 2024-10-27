@@ -1,0 +1,12 @@
+main: mt.sqbas.MessagesTotem
+version: 1.0.1
+name: MessagesTotem
+author: SqBasNPF
+api-version: 1.13
+
+commands:
+  messagestotem:
+    description: Comando principal de los mensajes de los totems
+    aliases:
+      - mt
+      - mtotem
