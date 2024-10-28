@@ -15,11 +15,20 @@ public class PlayerListener implements Listener {
     public void onResurrect(EntityResurrectEvent event){
         if(event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
-            player.sendMessage("&eHas usado un totem de la inmortalidad");
+            String message = Bukkit.getPluginManager().getPlugin("MessagesTotem").getConfig().getString("totemMessage");
+            if (message != null) {
+                message = message.replace("{player}", player.getName());
 
-            String message = player.getName() + "ha consumido un totem.";
-            Bukkit.broadcastMessage(message);
-            System.out.println("El jugador " + player.getName() + " ha usado un tótem.");
+                message = MessageUtils.getColoredMessage(message);
+
+                Bukkit.broadcastMessage(message);
+            }
+
+
+
         }
     }
 }
+//String message = player.getName() + "ha consumido un totem.";
+//            Bukkit.broadcastMessage(message);
+//             System.out.println("El jugador " + player.getName() + " ha usado un tótem.");

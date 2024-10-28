@@ -14,6 +14,8 @@ public class MessagesTotem extends JavaPlugin {
     public void onEnable() {
         registerCommands();
         registerEvents();
+        saveDefaultConfig();
+
 
         Bukkit.getConsoleSender().sendMessage(
                 ChatColor.translateAlternateColorCodes('&', prefix + "¡&aLos mensajes de los totems han sido cargados correctamente&f! &fVersion: " + version));
@@ -31,5 +33,14 @@ public class MessagesTotem extends JavaPlugin {
     public void registerEvents(){
         getServer().getPluginManager().registerEvents(new PlayerListener(),this);
     }
+
+    public void saveDefaultConfig(){
+
+        if (!getConfig(). isSet("totemMessage")) {
+            getConfig().set("totemMessage", "&e❂ &e&l{player} &eha consumido un totem.");
+        }
+        saveConfig();
+    }
+
 }
 
